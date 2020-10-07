@@ -13,6 +13,7 @@ namespace VLP_2410_UI
         private NumericUpDown Intensity;
         private RadioButton On;
         private RadioButton Off;
+        private TextBox Display;
         private GroupBox GroupBox1;
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace VLP_2410_UI
             this.On = new System.Windows.Forms.RadioButton();
             this.Intensity = new System.Windows.Forms.NumericUpDown();
             this.Off = new System.Windows.Forms.RadioButton();
+            this.Display = new System.Windows.Forms.TextBox();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Intensity)).BeginInit();
             this.SuspendLayout();
@@ -96,18 +98,29 @@ namespace VLP_2410_UI
             this.Off.Text = "Off";
             this.Off.CheckedChanged += new System.EventHandler(this.Off_CheckedChanged);
             // 
+            // Display
+            // 
+            this.Display.Location = new System.Drawing.Point(40, 150);
+            this.Display.Multiline = true;
+            this.Display.Name = "Display";
+            this.Display.ReadOnly = true;
+            this.Display.Size = new System.Drawing.Size(210, 60);
+            this.Display.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 150);
+            this.ClientSize = new System.Drawing.Size(300, 247);
             this.Controls.Add(this.SetLight);
             this.Controls.Add(this.GroupBox1);
+            this.Controls.Add(this.Display);
             this.Name = "Form1";
             this.Text = "Form1";
             this.GroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Intensity)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         #endregion

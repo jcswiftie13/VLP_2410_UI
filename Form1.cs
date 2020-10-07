@@ -21,40 +21,35 @@ namespace VLP_2410_UI
 
         private void SetLight_Click(object sender, EventArgs e)
         {
-            int light = Convert.ToInt32(Intensity.Value);
+            string light = Convert.ToInt32(Intensity.Value).ToString();
             int sum = 0;
-            bool zero = false;
             string command = "@00F";
-            List<int> digits = new List<int>();
-            while (light > 0)
+            if (light.Length < 3)
             {
-                digits.Add(light % 10);
-                light /= 10;
-            }
-            digits.Reverse();
-            for (int i = 0; i < digits.Count; i++)
-            {
-                if (digits.Count < 3 && zero == false)
+                for (int j = 0; j < (3 - light.Length); j++)
                 {
-                    for (int j = 0; j < (3 - digits.Count); i++)
-                    {
-                        command += "0";
-                    }
-                    zero = true;
+                    command += "0";
                 }
-                command += Convert.ToString(digits[i]);
             }
+            command += light;
             byte[] ascii = Encoding.ASCII.GetBytes(command);
             for (int i = 0; i < ascii.Length; i++)
             {
                 sum += ascii[i];
             }
+            string hex = sum.ToString("X");
+            hex = hex.Substring(hex.Length - 2);
+            command += hex;
+            command += "CRLF";
+            Display.Text = $"Set light intensity to {light}";
+            comport.SendData(command);
         }
 
         private void On_CheckedChanged(object sender, EventArgs e)
         {
             if (On.Checked)
             {
+                Display.Text = "Light on";
                 comport.SendData("@00L1007DCRLF");
             }
         }
@@ -63,6 +58,7 @@ namespace VLP_2410_UI
         {
             if (Off.Checked)
             {
+                Display.Text = "Light off";
                 comport.SendData("@00L0007CCRLF");
             }
         }
