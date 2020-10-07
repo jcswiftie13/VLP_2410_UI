@@ -52,6 +52,7 @@ namespace VLP_2410_UI
             this.SetLight.Size = new System.Drawing.Size(75, 20);
             this.SetLight.TabIndex = 0;
             this.SetLight.Text = "SetLight";
+            this.SetLight.Click += new System.EventHandler(this.SetLight_Click);
             // 
             // GroupBox1
             // 
@@ -72,6 +73,7 @@ namespace VLP_2410_UI
             this.On.Size = new System.Drawing.Size(100, 20);
             this.On.TabIndex = 0;
             this.On.Text = "On";
+            this.On.CheckedChanged += new System.EventHandler(this.On_CheckedChanged);
             // 
             // Intensity
             // 
@@ -82,7 +84,7 @@ namespace VLP_2410_UI
             0,
             0});
             this.Intensity.Name = "Intensity";
-            this.Intensity.Size = new System.Drawing.Size(120, 20);
+            this.Intensity.Size = new System.Drawing.Size(120, 22);
             this.Intensity.TabIndex = 1;
             // 
             // Off
@@ -92,6 +94,7 @@ namespace VLP_2410_UI
             this.Off.Size = new System.Drawing.Size(100, 20);
             this.Off.TabIndex = 1;
             this.Off.Text = "Off";
+            this.Off.CheckedChanged += new System.EventHandler(this.Off_CheckedChanged);
             // 
             // Form1
             // 

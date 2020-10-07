@@ -9,9 +9,14 @@ using System.Windows.Forms;
 
 namespace VLP_2410_UI
 {
-    class port_control
+    class PortControl
     {
-        private SerialPort port = new SerialPort("COM1", 38400, Parity.None, 8, StopBits.One);
+        private SerialPort port;
+
+        public PortControl()
+        {
+            port = new SerialPort("COM1", 38400, Parity.None, 8, StopBits.One);
+        }
 
         public void Connect()
         {
@@ -41,6 +46,14 @@ namespace VLP_2410_UI
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+            }
+        }
+
+        public void SendData(string command)
+        {
+            if (port.IsOpen)
+            {
+                port.WriteLine(command);
             }
         }
     }
