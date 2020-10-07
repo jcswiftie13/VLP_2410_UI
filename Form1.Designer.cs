@@ -111,7 +111,7 @@ namespace VLP_2410_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 247);
+            this.ClientSize = new System.Drawing.Size(300, 245);
             this.Controls.Add(this.SetLight);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.Display);
