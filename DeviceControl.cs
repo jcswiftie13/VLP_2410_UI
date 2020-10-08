@@ -47,20 +47,20 @@ namespace VLP_2410_UI
         {
             string command = ConcatIntensity(intensity);
             command += CalChecksum(command);
-            command += "CRLF";
+            command += "0D0A";
             string respond = HandleCommand(command);
             return respond;
         }
 
         public string LightOn()
         {
-            string respond = HandleCommand("@00L1007DCRLF");
+            string respond = HandleCommand("@00L1007D0D0A");
             return respond;
         }
 
         public string LightOff()
         {
-            string respond = HandleCommand("@00L0007CCRLF");
+            string respond = HandleCommand("@00L0007C0D0A");
             return respond;
         }
 
