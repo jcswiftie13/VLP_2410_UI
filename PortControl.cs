@@ -12,33 +12,10 @@ namespace VLP_2410_UI
     class PortControl
     {
         private SerialPort port;
-        public PortControl()
+        public PortControl(string com, int baud)
         {
-            port = new SerialPort("COM1", 38400, Parity.None, 8, StopBits.One);
-        }
-
-        public string CalChecksum(string light, string header)
-        {
-            int sum = 0;
-            string command = header;
-            if (light.Length < 3)
-            {
-                for (int j = 0; j < (3 - light.Length); j++)
-                {
-                    command += "0";
-                }
-            }
-            command += light;
-            byte[] ascii = Encoding.ASCII.GetBytes(command);
-            for (int i = 0; i < ascii.Length; i++)
-            {
-                sum += ascii[i];
-            }
-            string hex = sum.ToString("X");
-            hex = hex.Substring(hex.Length - 2);
-            command += hex;
-            command += "CRLF";
-            return command;
+            port = new SerialPort(com, baud, Parity.None, 8, StopBits.One);
+            Connect();
         }
 
         public void Connect()
@@ -82,7 +59,7 @@ namespace VLP_2410_UI
 
         public string GetData()
         {
-            string indata = null, content = null;
+            string indata = null;
             byte[] buf = new byte[1024];
 
             port.Read(buf, 0, port.BytesToRead);
@@ -91,27 +68,7 @@ namespace VLP_2410_UI
             {
                 indata = Encoding.ASCII.GetString(buf);
             }
-            if (indata[3] == 'N')
-            {
-                string error = indata.Substring(4, 2);
-                switch (error)
-                {
-                    case "01":
-                        content = "Command error";
-                        break;
-                    case "02":
-                        content = "Checksum error";
-                        break;
-                    case "03":
-                        content = "Set value out of range error";
-                        break;
-                }
-            }
-            else
-            {
-                content = "OK";
-            }
-            return content;
+            return indata;
         }
     }
 }
