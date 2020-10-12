@@ -4,6 +4,7 @@ using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VLP_2410_UI
 {
@@ -27,6 +28,7 @@ namespace VLP_2410_UI
                 }
             }
             command += light;
+            command += "00";
             return command;
         }
 
@@ -47,20 +49,20 @@ namespace VLP_2410_UI
         {
             string command = ConcatIntensity(intensity);
             command += CalChecksum(command);
-            command += "0D0A";
+            command += "\r\n";
             string respond = HandleCommand(command);
             return respond;
         }
 
         public string LightOn()
         {
-            string respond = HandleCommand("@00L1007D0D0A");
+            string respond = HandleCommand("@00L11F\r\n");
             return respond;
         }
 
         public string LightOff()
         {
-            string respond = HandleCommand("@00L0007C0D0A");
+            string respond = HandleCommand("@00L01E\r\n");
             return respond;
         }
 
@@ -81,20 +83,21 @@ namespace VLP_2410_UI
                 {
                     case "01":
                         content = "Command error";
-                        break;
+                        return content;
                     case "02":
                         content = "Checksum error";
-                        break;
+                        return content;
                     case "03":
                         content = "Set value out of range error";
-                        break;
+                        return content;
                 }
             }
-            else
+            else if (indata[3] == '0')
             {
                 content = "OK";
+                return content;
             }
-            return content;
+            return null;
         }
     }
 }

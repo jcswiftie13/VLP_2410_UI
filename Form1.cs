@@ -154,7 +154,9 @@ namespace VLP_2410_UI
             this.Comport.Items.AddRange(new object[] {
             "COM1",
             "COM2",
-            "COM3"});
+            "COM3",
+            "COM4",
+            "COM5"});
             this.Comport.Location = new System.Drawing.Point(70, 30);
             this.Comport.Name = "Comport";
             this.Comport.Size = new System.Drawing.Size(120, 20);

@@ -36,7 +36,7 @@ namespace VLP_2410_UI
                 MessageBox.Show(e.Message);
             }
         }
-        
+
         public void Close()
         {
             try
@@ -60,7 +60,7 @@ namespace VLP_2410_UI
         public string GetData()
         {
             string indata = null;
-            byte[] buf = new byte[1024];
+            byte[] buf = new byte[16];
 
             port.Read(buf, 0, port.BytesToRead);
 
