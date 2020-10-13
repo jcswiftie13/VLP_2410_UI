@@ -220,11 +220,14 @@ namespace VLP_2410_UI
         {
             if (On.Checked)
             {
-                Display.Text = "Light on";
                 string respond = DControl.LightOn();
                 if (respond != "OK")
                 {
                     Display.Text = respond;
+                }
+                else
+                {
+                    Display.Text = "Light on";
                 }
             }
         }
@@ -233,11 +236,14 @@ namespace VLP_2410_UI
         {
             if (Off.Checked)
             {
-                Display.Text = "Light off";
                 string respond = DControl.LightOff();
                 if (respond != "OK")
                 {
                     Display.Text = respond;
+                }
+                else
+                {
+                    Display.Text = "Light off";
                 }
             }
         }

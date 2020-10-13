@@ -53,7 +53,7 @@ namespace VLP_2410_UI
         {
             if (port.IsOpen)
             {
-                port.WriteLine(command);
+                port.Write(command);
             }
         }
 

@@ -56,13 +56,13 @@ namespace VLP_2410_UI
 
         public string LightOn()
         {
-            string respond = HandleCommand("@00L11F\r\n");
+            string respond = HandleCommand("@00L1007D\r\n");
             return respond;
         }
 
         public string LightOff()
         {
-            string respond = HandleCommand("@00L01E\r\n");
+            string respond = HandleCommand("@00L0007C\r\n");
             return respond;
         }
 
@@ -92,7 +92,7 @@ namespace VLP_2410_UI
                         return content;
                 }
             }
-            else if (indata[3] == '0')
+            else if (indata[3] == 'O')
             {
                 content = "OK";
                 return content;
